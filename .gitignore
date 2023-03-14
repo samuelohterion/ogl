@@ -1,3 +1,9 @@
 .vscode/
 build/
 downloads/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+libglad.a
+Makefile
+ogl
