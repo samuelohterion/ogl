@@ -6,21 +6,21 @@ If not installed yet, install glfw3
 
 ## GLFW3 / Ubuntu / Linux
 ```
-$ sudo apt update
-$ sudo apt install libglfw3 libglfw3-dev libglfw3-doc
-$ sudo apt upgrade
+sudo apt update
+sudo apt install libglfw3 libglfw3-dev libglfw3-doc
+sudo apt upgrade
 ```
 
 ## Download the repo
 ```
-$ git clone https://github.com/samuelohterion/ogl.git
+git clone https://github.com/samuelohterion/ogl.git
 ```
 
 ## VScode
 Open the repo in VSCode!  
 ```
-$ cd ogl
-$ code .
+cd ogl
+code .
 ```
 
 ## GLAD
@@ -47,8 +47,8 @@ copy it into the root folder of the project.
 Open and enter the repo in VSCode!  
 
 ```
-$ cd ogl
-$ code .
+cd ogl
+code .
 ```
 then  
 
@@ -62,17 +62,17 @@ Generate Makefiles:
   
 1. Ubuntu / Linux  
     ```
-    $ cmake . -G "Unix Makefiles" 
+    cmake . -G "Unix Makefiles" 
     ```
   
   or  
 
 2. Windows using mingw propablyA list of options can be found here: [https://coderefinery.github.io/cmake/08-generators/](https://coderefinery.github.io/cmake/08-generators/)  
     ```
-    $ cmake . -G "MinGW Makefiles" 
+    cmake . -G "MinGW Makefiles" 
     ```  
 
 ## Finally build the project
    ```
-   $ make
+   make
    ```
