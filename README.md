@@ -43,7 +43,6 @@ copy it into the root folder of the project.
     └── main.cpp
 ```
 
-  
 ## Configure and Build the project
 Open and enter the repo in VSCode!  
 
@@ -59,9 +58,9 @@ then
   
 or  
 ### via CMake  
+Generate Makefiles:
   
 1. Ubuntu / Linux  
-Generate Makefiles:
     ```
     $ cmake . -G "Unix Makefiles" 
     ```
@@ -69,7 +68,6 @@ Generate Makefiles:
   or  
 
 2. Windows using mingw propablyA list of options can be found here: [https://coderefinery.github.io/cmake/08-generators/](https://coderefinery.github.io/cmake/08-generators/)  
-Generate Makefiles:  
     ```
     $ cmake . -G "MinGW Makefiles" 
     ```  
