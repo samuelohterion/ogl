@@ -85,19 +85,19 @@ class OGL {
             glfwTerminate();
 
             glfwDestroyWindow(__window);
-       }
-
-       static void
-       key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+        }
+        
+        static void
+        key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
             
             if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
                 
                 glfwSetWindowShouldClose(window, GLFW_TRUE);
             }
         }
-
-       static void
-       framebufferSizeCallback(GLFWwindow* window, int w, int h) {
+        
+        static void
+        framebufferSizeCallback(GLFWwindow* window, int w, int h) {
             
             // make sure the viewport matches the new window dimensions; note that width and 
             // height will be significantly larger than specified on retina displays.
@@ -105,24 +105,24 @@ class OGL {
        }
 };
 
-
-/*
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-}
- */
 int
 main() {
 
     std::cout << "Hello OGL!" << std::endl;
 
+/*
     OGL
     * ogl = new OGL();
 
     ogl->exec();
- 
+ */
+    // This way seems also to work fine
+    OGL
+    ogl;
+
+    ogl.exec();
+    // This way seems also to work fine
+
     std::cout << "God Bye OGL!" << std::endl;
 
     return 0;
