@@ -10,16 +10,16 @@ main() {
     std::cout << "Hello OGL!" << std::endl;
     
 	Triangle2D
-	* triangle2D = new Triangle2D( "Triangle2D" );
+	* triangle2D = new Triangle2D("Triangle2D");
 /*
 	Dummy
-	* dummy = new Dummy ( );
+	* dummy = new Dummy ();
 
 	Quad3D
-	* quad3D = new Quad3D( "Quad3D" );
+	* quad3D = new Quad3D("Quad3D");
 
 	CoordinateSystem
-	* coordinateSystem = new CoordinateSystem( "CoordinateSystem" );
+	* coordinateSystem = new CoordinateSystem("CoordinateSystem");
 */
 
     OGL

@@ -72,6 +72,10 @@ OGL::exec() {
 void
 OGL::cleanup() {
 
+    for(auto & p : projects)
+
+		delete p.second;
+
     glfwTerminate();
 
     glfwDestroyWindow(__window);

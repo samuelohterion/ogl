@@ -21,21 +21,21 @@ typedef glm::mat2x3 M23;
 typedef glm::mat2   M2;
 
 void
-print( glm::vec2 const & p_vec );
+print(glm::vec2 const & p_vec);
 
 void
-print( glm::vec3 const & p_vec );
+print(glm::vec3 const & p_vec);
 
 void
-print( glm::vec4 const & p_vec );
+print(glm::vec4 const & p_vec);
 
 void
-print( glm::mat2 const & p_mat );
+print(glm::mat2 const & p_mat);
 
 void
-print( glm::mat3 const & p_mat );
+print(glm::mat3 const & p_mat);
 
 void
-print( glm::mat4 const & p_mat );
+print(glm::mat4 const & p_mat);
 
 #endif // GLMPRINTER_HPP

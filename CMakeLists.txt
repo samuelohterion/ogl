@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.1.0)
+
+set(CXX_STANDARD 20)
 
 project(ogl VERSION 0.1.0)
 

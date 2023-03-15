@@ -7,7 +7,7 @@ public GLProject {
 
 	public:
 
-		Quad3D( CStr const & p_name = "Quad3D" );
+		Quad3D(CStr const & p_name = "Quad3D");
 
 	public:
 
@@ -20,13 +20,13 @@ public GLProject {
 	public:
 
 		void
-		init( );
+		init();
 
 		void
-		paint( );
+		paint();
 
 		void
-		resize( int p_width, int p_height );
+		resize(int p_width, int p_height);
 
 };
 #endif // COLOREDTRIANGLE3D_HPP

@@ -13,8 +13,8 @@ class	Clock{
 
 	public:
 
-		Clock( ):
-		startTime( time( ) ) {
+		Clock():
+		startTime(time()) {
 
 		}
 
@@ -26,28 +26,28 @@ class	Clock{
 	public:
 
 		timeval
-		start( ) {
+		start() {
 
-			return startTime = time( );
+			return startTime = time();
 		}
 
 		std::size_t
-		elapsedMicros( ) const {
+		elapsedMicros() const {
 
 			timeval
-			now_ = time( );
+			now_ = time();
 
-			return ( 1e6 * now_.tv_sec + now_.tv_usec ) - (  1e6 * startTime.tv_sec + startTime.tv_usec );
+			return (1e6 * now_.tv_sec + now_.tv_usec) - ( 1e6 * startTime.tv_sec + startTime.tv_usec);
 		}
 
 		timeval
-		elapsed( ) {
+		elapsed() {
 
 			timeval
 			ret_;
 
 			std::size_t
-			microSecs_ = elapsedMicros( );
+			microSecs_ = elapsedMicros();
 
 			ret_.tv_sec  = microSecs_ / 1e6;
 			ret_.tv_usec = microSecs_ - ret_.tv_sec * 1e6;
@@ -56,23 +56,23 @@ class	Clock{
 		}
 
 		static timeval
-		time( ) {
+		time() {
 
 			timeval
 			ptv;
 
-			gettimeofday( &ptv, 0 );
+			gettimeofday(&ptv, 0);
 
 			return ptv;
 		}
 
 		static void
-		sleep( double const &p_seconds ) {
+		sleep(double const &p_seconds) {
 
 			#ifdef _WINDOWS
-				Sleep( p_seconds );
+				Sleep(p_seconds);
 			#else
-				usleep( p_seconds * 1e6 );
+				usleep(p_seconds * 1e6);
 			#endif
 		}
 };

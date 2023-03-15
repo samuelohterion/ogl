@@ -14,6 +14,8 @@
 #include "clock.hpp"
 #include "glr.hpp"
 
+using namespace glr;
+
 GLuint const 
 WIDTH_DEFAULT  = 320,
 HEIGHT_DEFAULT = 200;
@@ -26,15 +28,21 @@ class OGL {
     private:
 
         GLFWwindow
-        * __window;
+        * __window;        
 
     public:
 
-/*        OGL() {
+		std::map< CStr, GLProject * >
+		projects;
 
-            initGL();
-        }
-*/
+		CStr
+		currentProject;
+
+		ViewControlData
+		viewControlData;
+
+    public:
+
         OGL(
             GLuint const & p_width = WIDTH_DEFAULT,
             GLuint const & p_height = HEIGHT_DEFAULT,

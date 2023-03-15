@@ -7,7 +7,7 @@ public GLProject {
 
 	public:
 
-		CoordinateSystem( CStr const & p_name = "CoordinateSystem" );
+		CoordinateSystem(CStr const & p_name = "CoordinateSystem");
 
 	public:
 
@@ -20,13 +20,13 @@ public GLProject {
 	public:
 
 		void
-		init( );
+		init();
 
 		void
-		paint( );
+		paint();
 
 		void
-		resize( int p_width, int p_height );
+		resize(int p_width, int p_height);
 
 };
 #endif // COORDINATESYSTEM_HPP
