@@ -49,10 +49,19 @@ class OGL {
         cleanup();
         
         static void
-        key_callback(GLFWwindow* p_window, int p_key, int p_scancode, int p_action, int p_mods);
+        cursor_position_callback(GLFWwindow* p_window, double p_xpos, double p_ypos);
         
         static void
-        framebufferSizeCallback(GLFWwindow* window, int p_width, int p_height);
+        mouse_button_callback(GLFWwindow * p_window, int p_button, int p_action, int p_mods);
+
+        static void
+        scroll_callback(GLFWwindow * p_window, double p_xoffset, double p_yoffset);
+
+        static void
+        key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_action, int p_mods);
+        
+        static void
+        framebufferSizeCallback(GLFWwindow* p_window, int p_width, int p_height);
 };
 
 #endif

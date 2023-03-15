@@ -17,16 +17,14 @@ OGL::~OGL() {
     cleanup();
 }
 
-
-
 int
 OGL::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const * const & p_title) {
 
     if (! glfwInit()) {
 
-        std::cout << "glfwInit() failed! Exit with error code -1." << std::endl;
+        std::cout << "glfwInit() failed! Exit with error code EXIT_FAILURE." << std::endl;
 
-        return -1;
+        return EXIT_FAILURE;
     }
 
     __window = glfwCreateWindow(p_width, p_height, p_title, NULL, NULL);
@@ -36,19 +34,22 @@ OGL::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const * cons
 
     if (! gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
 
-        std::cout << "Loading GL via glad failed! Exit with error code -1." << std::endl;
+        std::cout << "Loading GL via glad failed! Exit with error code EXIT_FAILURE." << std::endl;
 
         glfwTerminate();
 
-        return -1;
+        return EXIT_FAILURE;
     }
 
     glfwSetFramebufferSizeCallback(__window, framebufferSizeCallback);
     glfwSetKeyCallback(__window, key_callback);
-    
+    glfwSetCursorPosCallback(__window, cursor_position_callback);
+    glfwSetMouseButtonCallback(__window, mouse_button_callback);
+    glfwSetScrollCallback(__window, scroll_callback);
+
     glClearColor(.25f, .5f, .75f, 1.f);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void
@@ -77,7 +78,32 @@ OGL::cleanup() {
 }
 
 void
-OGL::key_callback(GLFWwindow* p_window, int p_key, int p_scancode, int p_action, int p_mods) {
+OGL::cursor_position_callback(GLFWwindow * p_window, double p_xpos, double p_ypos) {
+
+    std::cout << "mouse pos: " << p_xpos << ", " << p_ypos << std::endl;
+}
+
+void
+OGL::mouse_button_callback(GLFWwindow * p_window, int p_button, int p_action, int p_mods) {
+
+    if (p_button == GLFW_MOUSE_BUTTON_LEFT && p_action == GLFW_PRESS)
+        std::cout << "left mouse button pressed\n";
+
+    if (p_button == GLFW_MOUSE_BUTTON_MIDDLE && p_action == GLFW_PRESS)
+        std::cout << "middle mouse button pressed\n";
+
+    if (p_button == GLFW_MOUSE_BUTTON_RIGHT && p_action == GLFW_PRESS)
+        std::cout << "right mouse button pressed\n";
+}
+
+void
+OGL::scroll_callback(GLFWwindow * p_window, double p_xoffset, double p_yoffset) {
+
+    std::cout << "scroll: " << p_xoffset << ", " << p_yoffset << std::endl;
+}
+
+void
+OGL::key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_action, int p_mods) {
     
     if (p_key == GLFW_KEY_ESCAPE && p_action == GLFW_PRESS) {
         
