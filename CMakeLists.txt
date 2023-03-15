@@ -4,6 +4,7 @@ project(ogl VERSION 0.1.0)
 
 add_executable(ogl
     src/main.cpp
+    src/ogl.cpp
     glad/include/glad/glad.h
     glad/src/glad.c
 )
