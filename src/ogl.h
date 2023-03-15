@@ -2,11 +2,17 @@
 #define OGL_H
 
 #include <iostream>
+#include <map>
 #include <math.h>
 
 #include "../glad/include/glad/glad.h"
 #include <GLFW/glfw3.h>
+#include <GL/gl.h>
+#include <GLES3/gl3.h>
 #include <glm/glm.hpp>
+
+#include "clock.hpp"
+#include "glr.hpp"
 
 GLuint const 
 WIDTH_DEFAULT  = 320,
