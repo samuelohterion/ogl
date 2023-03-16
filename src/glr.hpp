@@ -26,8 +26,13 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
+
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+#include "../glad/include/glad/glad.h"
 #include <GLES3/gl32.h>
 #include <GL/gl.h>
+
 #include "clock.hpp"
 
 namespace glr {

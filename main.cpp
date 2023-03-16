@@ -1,4 +1,6 @@
-#include "src/ogl.h"
+#include "glad/include/glad/glad.h"
+#include "src/glwman.h"
+#include "src/glwindow.h"
 #include "glprojects/triangle2d/triangle2d.hpp"
 #include "glprojects/quad3d/quad3d.hpp"
 #include "glprojects/dummy/dummy.hpp"
@@ -7,7 +9,7 @@
 int
 main() {
 
-    std::cout << "Hello OGL!" << std::endl;
+    std::cout << "Hello GLWindow!" << std::endl;
     
 	Triangle2D
 	* triangle2D = new Triangle2D("Triangle2D");
@@ -22,12 +24,14 @@ main() {
 	* coordinateSystem = new CoordinateSystem("CoordinateSystem");
 */
 
-    OGL
-    ogl;
+    GLWindow
+    glwindow;
 
-    ogl.exec();
+	glwindow.addGLProject(triangle2D);
 
-    std::cout << "God Bye OGL!" << std::endl;
+    glwindow.exec();
+
+    std::cout << "God Bye GLWindow!" << std::endl;
 
     return 0;
 }
