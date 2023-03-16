@@ -12,6 +12,7 @@ add_executable(ogl
     src/verbose.cpp
     src/glwman.cpp
     src/glwindow.cpp
+    glprojects/dummy/dummy.cpp
     glprojects/triangle2d/triangle2d.cpp
     main.cpp
 )

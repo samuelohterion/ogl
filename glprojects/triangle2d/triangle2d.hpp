@@ -10,7 +10,7 @@ public GLProject {
 
 	public:
 
-		Triangle2D(CStr const & p_name = "Triangle2D");
+		Triangle2D(CStr & p_name = "Triangle2D");
 
 	public:
 

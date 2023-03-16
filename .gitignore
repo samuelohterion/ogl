@@ -1,7 +1,6 @@
 .vscode/
 build/
 downloads/
-glad/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake

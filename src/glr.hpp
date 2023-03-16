@@ -1794,12 +1794,12 @@ namespace glr {
 					Named(p_name),
 					__glr(p_glr) {
 
-						verbose("Container Constructor: " << p_name)
+						//verbose("Container Constructor: " << p_name)
 					}
 
 					~Container() {
 
-						verbose("Container Destructor: " << name())
+						//verbose("Container Destructor: " << name())
 					}
 
 				public:
@@ -1945,7 +1945,7 @@ namespace glr {
 					void
 					run() {
 
-						verbose("container::run()")
+						//verbose("container::run()")
 
 						VertexArray
 						* va = __glr -> va[vertexArray];
@@ -2242,11 +2242,11 @@ namespace glr {
 			void
 			run (std::initializer_list< CStr > const & p_containers) {
 
-				verbose("glr::run()")
+				//verbose("glr::run()")
 
 				for (auto c : p_containers) {
 
-					verbose("container: " << c)
+					//verbose("container: " << c)
 
 					co[c] -> run();
 				}

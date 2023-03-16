@@ -1,6 +1,9 @@
 #ifndef DUMMY_HPP
 #define DUMMY_HPP
+
 #include "../../src/glr.hpp"
+
+using namespace glr;
 
 class
 Triangle {

@@ -1,17 +1,17 @@
 #include "triangle2d.hpp"
 #include "../../src/glmprinter.hpp"
 
-Triangle2D::Triangle2D(CStr const & p_name) :
+Triangle2D::Triangle2D(CStr & p_name) :
 GLProject (p_name) {
 
-	verbose("Triangle2D::Triangle2D(CStr const & p_name)")
-	verbose("\tp_name: " << p_name)
+//	verbose("Triangle2D::Triangle2D(CStr const & p_name)")
+//	verbose("\tp_name: " << p_name)
 }
 
 void
 Triangle2D::init() {
 
-	verbose("void Triangle2D::init()")
+//	verbose("void Triangle2D::init()")
 
 	glClearColor(.0f, .0f, .0f, 1.f);
 
@@ -92,7 +92,7 @@ Triangle2D::init() {
 void
 Triangle2D::paint() {
 
-	verbose("Triangle2D::paint()")
+//	verbose("Triangle2D::paint()")
 
 	glClear(GL_COLOR_BUFFER_BIT);
 
@@ -102,7 +102,7 @@ Triangle2D::paint() {
 void
 Triangle2D::resize(int p_width, int p_height) {
 
-	verbose("void Triangle2D::resize(int p_width, int p_height)")
-	verbose("\tw: " << p_width << ", h: " << p_height)
+//	verbose("void Triangle2D::resize(int p_width, int p_height)")
+//	verbose("\tw: " << p_width << ", h: " << p_height)
 	glr.screenon();
 }

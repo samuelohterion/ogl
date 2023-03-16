@@ -5,6 +5,7 @@
 //#include <GLFW/glfw3.h>
 #include "glwindow.h"
 #include "glwman.h"
+#include "verbose.cpp"
 
 GLWMan *
 GLWMan::instance = nullptr; 
@@ -47,6 +48,8 @@ GLWMan::addWindow(GLWindow * p_glWindow) {
     verbose("void GLWMan::addWindow(GLWindow * p_glWindow)")
 
     windows[p_glWindow -> __window] = p_glWindow;
+
+    setBindings(p_glWindow -> __window);
 }
 
 void 
