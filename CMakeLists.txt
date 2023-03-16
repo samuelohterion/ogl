@@ -9,6 +9,7 @@ find_package(OpenGL REQUIRED)
 add_executable(ogl
     glad/include/glad/glad.h
     glad/src/glad.c
+    src/verbose.cpp
     src/glwman.cpp
     src/glwindow.cpp
     glprojects/triangle2d/triangle2d.cpp

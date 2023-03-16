@@ -3,6 +3,7 @@
 
 #include "glwindow.h"
 #include <math.h>
+#include "verbose.cpp"
 /*
 GLWindow::GLWindow() {
 
@@ -12,10 +13,14 @@ GLWindow::GLWindow() {
 
 GLWindow::GLWindow(GLuint const & p_width, GLuint const & p_height, GLchar const * const & p_title) {
 
+    verbose("GLWindow::GLWindow(GLuint const & p_width, GLuint const & p_height, GLchar const * const & p_title)")
+
     initGL(p_width, p_height, p_title);
 }
 
 GLWindow::~GLWindow() {
+
+    verbose("GLWindow::~GLWindow()")
 
     cleanup();
 }
@@ -23,11 +28,16 @@ GLWindow::~GLWindow() {
 void
 GLWindow::addGLProject(GLProject * p_glProject) {
 
-	projects[p_glProject->name().c_str()] = p_glProject;
+    verbose("void GLWindow::addGLProject(GLProject * p_glProject)")
+	verbose("\tadd GLProject" << p_glProject -> name());
+
+	projects[p_glProject->name()] = p_glProject;
 }
 
 void
 GLWindow::exec() {
+
+    verbose("void GLWindow::exec()")
 
     while (! glfwWindowShouldClose(__window)) {
 
@@ -42,9 +52,14 @@ GLWindow::exec() {
 void
 GLWindow::cleanup() {
 
-    for(auto & p : projects)
+    verbose("void GLWindow::cleanup()")
 
-		delete p.second;
+    for(auto & p : projects) {
+
+        verbose("\tdelete " << p.second -> name())
+
+        delete p.second;
+    }
 
     glfwTerminate();
 
@@ -55,6 +70,8 @@ GLWindow::cleanup() {
 
 void
 GLWindow::cursor_position(double p_xpos, double p_ypos) {
+
+    verbose("void GLWindow::cursor_position(double p_xpos, double p_ypos)")
 
     std::cout << "mouse pos: " << p_xpos << ", " << p_ypos << std::endl;
 
@@ -75,6 +92,8 @@ GLWindow::cursor_position(double p_xpos, double p_ypos) {
 void
 GLWindow::fb_resize(int p_width, int p_height) {
     
+    verbose("void GLWindow::fb_resize(int p_width, int p_height)")
+
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, p_width, p_height);
@@ -82,6 +101,8 @@ GLWindow::fb_resize(int p_width, int p_height) {
 
 int
 GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const * const & p_title) {
+
+    verbose("int GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const * const & p_title)")
 
     if (! glfwInit()) {
 
@@ -125,8 +146,8 @@ GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const *
 
 	if(0 < projects.count(currentProject)) {
 
-		projects[currentProject]->setViewControlData(& viewControlData);
-		projects[currentProject]->init();
+		projects[currentProject] -> setViewControlData(& viewControlData);
+		projects[currentProject] -> init();
 	}
 
     return EXIT_SUCCESS;
@@ -135,6 +156,8 @@ GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const *
 void
 GLWindow::key(int p_key, int p_scancode, int p_action, int p_mods) {
     
+    verbose("void GLWindow::key(int p_key, int p_scancode, int p_action, int p_mods)")
+
     if (p_key == GLFW_KEY_ESCAPE && p_action == GLFW_PRESS) {
         
         glfwSetWindowShouldClose(__window, GLFW_TRUE);
@@ -143,6 +166,8 @@ GLWindow::key(int p_key, int p_scancode, int p_action, int p_mods) {
 
 void
 GLWindow::mouse_button(int p_button, int p_action, int p_mods) {
+
+    verbose("void GLWindow::mouse_button(int p_button, int p_action, int p_mods)")
 
     if (p_button == GLFW_MOUSE_BUTTON_LEFT && p_action == GLFW_PRESS)
         std::cout << "left mouse button pressed\n";
@@ -157,6 +182,8 @@ GLWindow::mouse_button(int p_button, int p_action, int p_mods) {
 void
 GLWindow::paintGL() {
     
+    verbose("GLWindow::paintGL()")
+
     GLdouble
     time = glfwGetTime();
 
@@ -165,7 +192,8 @@ GLWindow::paintGL() {
 
 	if(0 < projects.count(currentProject)) {
 
-		projects[currentProject]->paint();
+        verbose("\tpaint current project: " << currentProject)
+		projects[currentProject] -> paint();
 	}
 
 	viewControlData.dMouse = glm::vec2(0.f, 0.f);
@@ -176,16 +204,23 @@ GLWindow::paintGL() {
 void
 GLWindow::removeGLProject(CStr  & p_name) {
 
+    verbose("void GLWindow::removeGLProject(CStr  & p_name)")
+    
+    verbose("\tdelete projects[" << p_name << "]")
     delete projects[p_name];
 
+    verbose("\terase entry from projects")
 	projects.erase(p_name);
 }
 
 void
 GLWindow::selectGLProject(CStr & p_projectName) {
 
+    verbose("void GLWindow::selectGLProject(CStr & p_projectName)")
+
     if (0 < projects.count(p_projectName)) {
 
+        verbose("\tcurrentProject = " << p_projectName)
         currentProject = p_projectName;
     }
 }
@@ -193,12 +228,15 @@ GLWindow::selectGLProject(CStr & p_projectName) {
 void
 GLWindow::scroll_wheel(double p_xoffset, double p_yoffset) {
 
+    verbose("void GLWindow::scroll_wheel(double p_xoffset, double p_yoffset)")
+
     std::cout << "scroll: " << p_xoffset << ", " << p_yoffset << std::endl;
 }
 
 void
 GLWindow::win_resize(int p_width, int p_height) {
     
+    verbose("void GLWindow::win_resize(int p_width, int p_height)")
 
     viewControlData.width  = p_width;
 	viewControlData.height = p_height;
@@ -210,8 +248,8 @@ GLWindow::win_resize(int p_width, int p_height) {
 
 	if(0 < projects.count(currentProject)) {
 
-		projects[currentProject]->resizeViewport(p_width, p_height);
-		projects[currentProject]->resize(p_width, p_height);
+		projects[currentProject] -> resizeViewport(p_width, p_height);
+		projects[currentProject] -> resize(p_width, p_height);
 	}
 }
 #endif

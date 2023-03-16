@@ -7,6 +7,8 @@
 //	#define GL_VERTEX_ATTRIB_ARRAY_NORMALIZED 0x886A
 //	#endif
 
+#include "verbose.cpp"
+
 #include <initializer_list>
 #include <fstream>
 #include <istream>
@@ -1789,14 +1791,16 @@ namespace glr {
 
 				public :
 
-					Container(CStr &p_name, GLR * p_glr) :
+					Container(CStr & p_name, GLR * p_glr) :
 					Named(p_name),
 					__glr(p_glr) {
 
+						verbose("Container Constructor: " << p_name)
 					}
 
 					~Container() {
 
+						verbose("Container Destructor: " << name())
 					}
 
 				public:
@@ -1942,16 +1946,18 @@ namespace glr {
 					void
 					run() {
 
+						verbose("container::run()")
+
 						VertexArray
-						* va = __glr->va[vertexArray];
+						* va = __glr -> va[vertexArray];
 
 						if (va) {
 
-							va->bind();
+							va -> bind();
 
-							if (va->usage != GL_STATIC_DRAW) {
+							if (va -> usage != GL_STATIC_DRAW) {
 
-								glBufferData(GL_ARRAY_BUFFER, sizeof(float) * va->arr.size(), va->arr.data(), va->usage);
+								glBufferData(GL_ARRAY_BUFFER, sizeof(float) * va -> arr.size(), va -> arr.data(), va -> usage);
 							}
 						}
 
@@ -2237,9 +2243,13 @@ namespace glr {
 			void
 			run (std::initializer_list< CStr > const & p_containers) {
 
+				verbose("glr::run()")
+
 				for (auto c : p_containers) {
 
-					co[c]->run ();
+					verbose("container: " << c)
+
+					co[c] -> run();
 				}
 			}
 
@@ -2248,7 +2258,7 @@ namespace glr {
 
 				for (auto c : p_containers) {
 
-					co[c]->run ();
+					co[c] -> run();
 				}
 			}
 

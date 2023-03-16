@@ -10,11 +10,17 @@ GLWMan *
 GLWMan::instance = nullptr; 
 
 GLWMan::GLWMan() {
+
+    verbose("GLWMan::GLWMan()")
 } 
 
 GLWMan::~GLWMan() {
 
+    verbose("GLWMan::~GLWMan()")
+
     if(instance != nullptr) {
+
+        verbose("\tinstance exists and will be deleted")
     
         delete instance;
     }            
@@ -23,7 +29,11 @@ GLWMan::~GLWMan() {
 GLWMan *
 GLWMan::getInstance() {
 
+    verbose("GLWMan::getInstance()")
+
     if(instance == nullptr) {
+
+        verbose("\tinstance doesn't exist and will be created")
 
         instance = new GLWMan();
     }
@@ -34,25 +44,35 @@ GLWMan::getInstance() {
 void 
 GLWMan::addWindow(GLWindow * p_glWindow) {
 
+    verbose("void GLWMan::addWindow(GLWindow * p_glWindow)")
+
     windows[p_glWindow -> __window] = p_glWindow;
 }
 
 void 
-GLWMan::deleteWindow(GLFWwindow * p_glf_window) {
+GLWMan::deleteWindow(GLFWwindow * p_glfwWindow) {
 
-    windows.erase(p_glf_window);
+    verbose("void GLWMan::deleteWindow(GLFWwindow * p_glfwWindow)")
+
+    windows.erase(p_glfwWindow);
 }
 
 void 
 GLWMan::deleteWindow(GLWindow * p_gl_window) {
+
+    verbose("void GLWMan::deleteWindow(GLWindow * p_glWindow)")
 
     windows.erase(p_gl_window -> __window);
 }    
 
 void
 GLWMan::setBindings(GLFWwindow * p_window) {
+
+    verbose("void GLWMan::setBindings(GLFWwindow * p_window)")
     
     if (windows.find(p_window) != windows.end()) {
+
+        verbose("\twindow was found. callbacks will be set.")
 
         glfwSetWindowSizeCallback(p_window, window_resize_callback);
         glfwSetFramebufferSizeCallback(p_window, framebuffer_resize_callback);
@@ -66,6 +86,8 @@ GLWMan::setBindings(GLFWwindow * p_window) {
 GLWindow *
 GLWMan::getGLWindow(GLFWwindow * p_window) {
     
+    verbose("GLWindow * GLWMan::getGLWindow(GLFWwindow * p_window)")
+
     GLWMan *
     glmwan = GLWMan::getInstance();
 
@@ -77,6 +99,8 @@ GLWMan::getGLWindow(GLFWwindow * p_window) {
 
 void
 GLWMan::cursor_position_callback(GLFWwindow * p_window, double p_xpos, double p_ypos) {
+
+    verbose("void GLWMan::cursor_position_callback(GLFWwindow * p_window, double p_xpos, double p_ypos)")
 
     GLWindow *
     glw = getGLWindow(p_window);
@@ -90,6 +114,8 @@ GLWMan::cursor_position_callback(GLFWwindow * p_window, double p_xpos, double p_
 void
 GLWMan::mouse_button_callback(GLFWwindow * p_window, int p_button, int p_action, int p_mods) {
 
+    verbose("void GLWMan::mouse_button_callback(GLFWwindow * p_window, int p_button, int p_action, int p_mods)")
+
     GLWindow *
     glw = getGLWindow(p_window);
 
@@ -101,6 +127,8 @@ GLWMan::mouse_button_callback(GLFWwindow * p_window, int p_button, int p_action,
 
 void
 GLWMan::scroll_wheel_callback(GLFWwindow * p_window, double p_xoffset, double p_yoffset) {
+
+    verbose("void GLWMan::scroll_wheel_callback(GLFWwindow * p_window, double p_xoffset, double p_yoffset)")
 
     GLWindow *
     glw = getGLWindow(p_window);
@@ -114,6 +142,8 @@ GLWMan::scroll_wheel_callback(GLFWwindow * p_window, double p_xoffset, double p_
 void
 GLWMan::key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_action, int p_mods) {
     
+    verbose("void GLWMan::key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_action, int p_mods)")
+
     GLWindow *
     glw = getGLWindow(p_window);
 
@@ -125,6 +155,8 @@ GLWMan::key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_act
 
 void
 GLWMan::window_resize_callback(GLFWwindow * p_window, int p_width, int p_height) {
+    
+    verbose("void GLWMan::window_resize_callback(GLFWwindow * p_window, int p_width, int p_height)")
     
     GLWindow *
     glw = getGLWindow(p_window);
@@ -138,6 +170,8 @@ GLWMan::window_resize_callback(GLFWwindow * p_window, int p_width, int p_height)
 void
 GLWMan::framebuffer_resize_callback(GLFWwindow * p_window, int p_width, int p_height) {
     
+    verbose("void GLWMan::framebuffer_resize_callback(GLFWwindow * p_window, int p_width, int p_height)")
+
     GLWindow *
     glw = getGLWindow(p_window);
 

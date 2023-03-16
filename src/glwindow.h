@@ -1,7 +1,6 @@
 #ifndef GLWindow_H
 #define GLWindow_H
 
-#include <iostream>
 #include <map>
 #include <math.h>
 

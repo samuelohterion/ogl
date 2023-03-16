@@ -6,34 +6,30 @@
 #include "glprojects/dummy/dummy.hpp"
 #include "glprojects/coordinateSystem/coordinatesystem.hpp"
 
+#define VERBOSE
+
 int
 main() {
 
-    std::cout << "Hello GLWindow!" << std::endl;
-    
+	#ifdef VERBOSE
+    	std::cout << "Hello GLWindow!" << std::endl;
+	#endif
+
 	Triangle2D
 	* triangle2D = new Triangle2D("Triangle2D");
-/*
-	Dummy
-	* dummy = new Dummy ();
-
-	Quad3D
-	* quad3D = new Quad3D("Quad3D");
-
-	CoordinateSystem
-	* coordinateSystem = new CoordinateSystem("CoordinateSystem");
-*/
 
     GLWindow
     glwindow;
 
 	glwindow.addGLProject(triangle2D);
 
-	glwindow.selectGLProject(triangle2D->name());
+	glwindow.selectGLProject(triangle2D -> name());
 
     glwindow.exec();
 
-    std::cout << "God Bye GLWindow!" << std::endl;
+ 	#ifdef VERBOSE
+		std::cout << "God Bye GLWindow!" << std::endl;
+	#endif
 
-    return 0;
+    return EXIT_SUCCESS;
 }
