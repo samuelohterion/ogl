@@ -37,7 +37,7 @@ class GLWindow {
         std::map< CStr, GLProject * >
 		projects;
 
-		CStr
+		Str
 		currentProject;
 
 		ViewControlData
@@ -62,34 +62,37 @@ class GLWindow {
         addGLProject(GLProject * p_glProject);
 
         void
-        removeGLProject(CStr & p_name);
-
-        void
-        paintGL();
-
-        void
-        exec();
-
-        void
         cleanup();
         
         void
         cursor_position(double p_xpos, double p_ypos);
         
         void
-        mouse_button(int p_button, int p_action, int p_mods);
+        exec();
 
         void
-        scroll_wheel(double p_xoffset, double p_yoffset);
+        fb_resize(int p_width, int p_height);
 
         void
         key(int p_key, int p_scancode, int p_action, int p_mods);
         
         void
-        win_resize(int p_width, int p_height);
+        mouse_button(int p_button, int p_action, int p_mods);
 
         void
-        fb_resize(int p_width, int p_height);
+        paintGL();
+
+        void
+        removeGLProject(CStr & p_name);
+
+        void
+        selectProject(CStr & p_projectName);
+
+        void
+        scroll_wheel(double p_xoffset, double p_yoffset);
+
+        void
+        win_resize(int p_width, int p_height);
 };
 
 #endif
