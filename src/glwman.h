@@ -59,6 +59,9 @@ class GLWMan {
         key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_action, int p_mods);
 
         static void
-        resize_callback(GLFWwindow * p_window, int p_width, int p_height);
+        window_resize_callback(GLFWwindow * p_window, int p_width, int p_height);
+
+        static void
+        framebuffer_resize_callback(GLFWwindow * p_window, int p_width, int p_height);
 };
 #endif

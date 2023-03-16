@@ -86,7 +86,10 @@ class GLWindow {
         key(int p_key, int p_scancode, int p_action, int p_mods);
         
         void
-        resize(int p_width, int p_height);
+        win_resize(int p_width, int p_height);
+
+        void
+        fb_resize(int p_width, int p_height);
 };
 
 #endif

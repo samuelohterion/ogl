@@ -180,13 +180,10 @@ GLWindow::key(int p_key, int p_scancode, int p_action, int p_mods) {
 }
 
 void
-GLWindow::resize(int p_width, int p_height) {
+GLWindow::win_resize(int p_width, int p_height) {
     
-    // make sure the viewport matches the new window dimensions; note that width and 
-    // height will be significantly larger than specified on retina displays.
-    glViewport(0, 0, p_width, p_height);
 
-    	viewControlData.width = p_width;
+    viewControlData.width  = p_width;
 	viewControlData.height = p_height;
 
 	viewControlData.aspect = glm::vec2(p_width, p_height) / float(p_width < p_height ? p_height : p_width);
@@ -199,6 +196,14 @@ GLWindow::resize(int p_width, int p_height) {
 		projects[ currentProject ]->resizeViewport(p_width, p_height);
 		projects[ currentProject ]->resize(p_width, p_height);
 	}
+}
+
+void
+GLWindow::fb_resize(int p_width, int p_height) {
+    
+    // make sure the viewport matches the new window dimensions; note that width and 
+    // height will be significantly larger than specified on retina displays.
+    glViewport(0, 0, p_width, p_height);
 }
 
 #endif

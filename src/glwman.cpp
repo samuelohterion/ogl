@@ -54,7 +54,8 @@ GLWMan::setBindings(GLFWwindow * p_window) {
     
     if (windows.find(p_window) != windows.end()) {
 
-        glfwSetFramebufferSizeCallback(p_window, resize_callback);
+        glfwSetWindowSizeCallback(p_window, window_resize_callback);
+        glfwSetFramebufferSizeCallback(p_window, framebuffer_resize_callback);
         glfwSetKeyCallback(p_window, key_callback);
         glfwSetCursorPosCallback(p_window, cursor_position_callback);
         glfwSetMouseButtonCallback(p_window, mouse_button_callback);
@@ -123,14 +124,26 @@ GLWMan::key_callback(GLFWwindow * p_window, int p_key, int p_scancode, int p_act
 }
 
 void
-GLWMan::resize_callback(GLFWwindow * p_window, int p_width, int p_height) {
+GLWMan::window_resize_callback(GLFWwindow * p_window, int p_width, int p_height) {
     
     GLWindow *
     glw = getGLWindow(p_window);
 
     if (glw != nullptr) {
 
-        glw -> resize(p_width, p_height);
+        glw -> win_resize(p_width, p_height);
+    }
+}
+
+void
+GLWMan::framebuffer_resize_callback(GLFWwindow * p_window, int p_width, int p_height) {
+    
+    GLWindow *
+    glw = getGLWindow(p_window);
+
+    if (glw != nullptr) {
+
+        glw -> fb_resize(p_width, p_height);
     }
 }
 #endif
