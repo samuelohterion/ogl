@@ -161,7 +161,7 @@ GLWindow::paintGL() {
     time = glfwGetTime();
 
     glClearColor(.25f, .5f, .5 + .5 * sin(time), 1.f);
-//    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
 	if(0 < projects.count(currentProject)) {
 

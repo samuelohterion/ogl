@@ -29,6 +29,8 @@ main() {
 
 	glwindow.addGLProject(triangle2D);
 
+	glwindow.selectProject(triangle2D->name());
+
     glwindow.exec();
 
     std::cout << "God Bye GLWindow!" << std::endl;
