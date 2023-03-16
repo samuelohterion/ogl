@@ -10,7 +10,7 @@ class GLWindow;
 class GLWMan {  
     
     
-    private:
+    public:
     
         static GLWMan *
         instance;

@@ -6,6 +6,9 @@
 #include "glwindow.h"
 #include "glwman.h"
 
+GLWMan *
+GLWMan::instance = nullptr; 
+
 GLWMan::GLWMan() {
 } 
 
