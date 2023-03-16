@@ -2,7 +2,7 @@
 #define GLWINDOW_CPP
 
 #include "glwindow.h"
-
+#include <math.h>
 /*
 GLWindow::GLWindow() {
 
@@ -61,6 +61,28 @@ GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const *
 
     glClearColor(.25f, .5f, .75f, 1.f);
 
+	viewControlData.width = p_width;
+	viewControlData.height = p_height;
+
+	viewControlData.mousex = viewControlData.width >> 1;
+	viewControlData.mousey = viewControlData.height >> 1;
+	viewControlData.ticks = 0;
+
+	viewControlData.dMouse = glm::vec2(0, 0);
+
+	viewControlData.buttons = 0;
+	viewControlData.time    = 0;
+
+	viewControlData.ok = true;
+
+	glViewport(0, 0, viewControlData.width, viewControlData.height);
+
+	if(0 < projects.count(currentProject)) {
+
+		projects[ currentProject ]->setViewControlData(& viewControlData);
+		projects[ currentProject ]->init();
+	}
+
     return EXIT_SUCCESS;
 }
 
@@ -70,8 +92,17 @@ GLWindow::paintGL() {
     GLdouble
     time = glfwGetTime();
 
-    glClearColor(.25f, .5f, .5 + .5 * sin(time), 1.f);
-    glClear(GL_COLOR_BUFFER_BIT);
+//    glClearColor(.25f, .5f, .5 + .5 * sin(time), 1.f);
+//    glClear(GL_COLOR_BUFFER_BIT);
+
+	if(0 < projects.count(currentProject)) {
+
+		projects[ currentProject ]->paint();
+	}
+
+	viewControlData.dMouse = glm::vec2(0.f, 0.f);
+
+	viewControlData.ticks = 0;
 }
 
 void
@@ -154,6 +185,20 @@ GLWindow::resize(int p_width, int p_height) {
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, p_width, p_height);
+
+    	viewControlData.width = p_width;
+	viewControlData.height = p_height;
+
+	viewControlData.aspect = glm::vec2(p_width, p_height) / float(p_width < p_height ? p_height : p_width);
+
+	viewControlData.mousex = viewControlData.width >> 1;
+	viewControlData.mousey = viewControlData.height >> 1;
+
+	if(0 < projects.count(currentProject)) {
+
+		projects[ currentProject ]->resizeViewport(p_width, p_height);
+		projects[ currentProject ]->resize(p_width, p_height);
+	}
 }
 
 #endif

@@ -1062,7 +1062,7 @@ namespace glr {
 
 								return createFromCode(ss.str());
 						}
-						catch(std::exception p_exception ) {
+						catch(std::exception p_exception) {
 
 							std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
 						}
@@ -2244,7 +2244,7 @@ namespace glr {
 			}
 
 			void
-			run (std::vector < Str > const & p_containers ) {
+			run (std::vector < Str > const & p_containers) {
 
 				for (auto c : p_containers) {
 

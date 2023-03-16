@@ -96,5 +96,5 @@ Triangle2D::paint() {
 void
 Triangle2D::resize(int p_width, int p_height) {
 
-	glr.screenon ();
+	glr.screenon();
 }
