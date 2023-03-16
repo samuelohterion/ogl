@@ -182,7 +182,7 @@ GLWindow::removeGLProject(CStr  & p_name) {
 }
 
 void
-GLWindow::selectProject(CStr & p_projectName) {
+GLWindow::selectGLProject(CStr & p_projectName) {
 
     if (0 < projects.count(p_projectName)) {
 

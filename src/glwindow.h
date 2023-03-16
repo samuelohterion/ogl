@@ -86,7 +86,7 @@ class GLWindow {
         removeGLProject(CStr & p_name);
 
         void
-        selectProject(CStr & p_projectName);
+        selectGLProject(CStr & p_projectName);
 
         void
         scroll_wheel(double p_xoffset, double p_yoffset);

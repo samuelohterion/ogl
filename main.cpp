@@ -29,7 +29,7 @@ main() {
 
 	glwindow.addGLProject(triangle2D);
 
-	glwindow.selectProject(triangle2D->name());
+	glwindow.selectGLProject(triangle2D->name());
 
     glwindow.exec();
 
