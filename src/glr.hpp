@@ -55,7 +55,6 @@ namespace glr {
 
 			Named (CStr const & p_name = "NONAME") :
 			__name (p_name) {
-
 			}
 
 			Named (Named const & p_name) :

@@ -6,20 +6,20 @@
 #include "glprojects/dummy/dummy.hpp"
 #include "glprojects/coordinateSystem/coordinatesystem.hpp"
 
-#define VERBOSE
+#include "src/verbose.cpp"
 
 int
 main() {
 
-	#ifdef VERBOSE
-    	std::cout << "Hello GLWindow!" << std::endl;
-	#endif
+	verbose("Hello GLWindow!")
+
+    GLWindow
+    glwindow;
 
 	Triangle2D
 	* triangle2D = new Triangle2D("Triangle2D");
 
-    GLWindow
-    glwindow;
+	triangle2D -> init();
 
 	glwindow.addGLProject(triangle2D);
 
@@ -27,9 +27,8 @@ main() {
 
     glwindow.exec();
 
- 	#ifdef VERBOSE
-		std::cout << "God Bye GLWindow!" << std::endl;
-	#endif
+ 	
+	verbose("God Bye GLWindow!")
 
     return EXIT_SUCCESS;
 }
