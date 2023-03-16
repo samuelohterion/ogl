@@ -37,7 +37,7 @@ class	Clock{
 			timeval
 			now_ = time();
 
-			return (1e6 * now_.tv_sec + now_.tv_usec) - ( 1e6 * startTime.tv_sec + startTime.tv_usec);
+			return (1e6 * now_.tv_sec + now_.tv_usec) - (1e6 * startTime.tv_sec + startTime.tv_usec);
 		}
 
 		timeval

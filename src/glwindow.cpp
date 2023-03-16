@@ -61,7 +61,7 @@ GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const *
 
     glClearColor(.25f, .5f, .75f, 1.f);
 
-	viewControlData.width = p_width;
+	viewControlData.width  = p_width;
 	viewControlData.height = p_height;
 
 	viewControlData.mousex = viewControlData.width >> 1;
@@ -79,8 +79,8 @@ GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const *
 
 	if(0 < projects.count(currentProject)) {
 
-		projects[ currentProject ]->setViewControlData(& viewControlData);
-		projects[ currentProject ]->init();
+		projects[currentProject]->setViewControlData(& viewControlData);
+		projects[currentProject]->init();
 	}
 
     return EXIT_SUCCESS;
@@ -97,7 +97,7 @@ GLWindow::paintGL() {
 
 	if(0 < projects.count(currentProject)) {
 
-		projects[ currentProject ]->paint();
+		projects[currentProject]->paint();
 	}
 
 	viewControlData.dMouse = glm::vec2(0.f, 0.f);
@@ -193,8 +193,8 @@ GLWindow::win_resize(int p_width, int p_height) {
 
 	if(0 < projects.count(currentProject)) {
 
-		projects[ currentProject ]->resizeViewport(p_width, p_height);
-		projects[ currentProject ]->resize(p_width, p_height);
+		projects[currentProject]->resizeViewport(p_width, p_height);
+		projects[currentProject]->resize(p_width, p_height);
 	}
 }
 

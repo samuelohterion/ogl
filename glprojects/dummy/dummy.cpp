@@ -200,5 +200,5 @@ Dummy::resize(int p_width, int p_height) {
 	h = p_height,
 	ratio = w / h;
 
-	p = glm::perspective( 45.0f, ratio, .1f, 50.f);
+	p = glm::perspective(45.0f, ratio, .1f, 50.f);
 }
