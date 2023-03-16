@@ -19,8 +19,6 @@ main() {
 	Triangle2D
 	* triangle2D = new Triangle2D("Triangle2D");
 
-	triangle2D -> init();
-
 	glwindow.addGLProject(triangle2D);
 
 	glwindow.selectGLProject(triangle2D -> name());

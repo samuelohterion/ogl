@@ -31,7 +31,9 @@ GLWindow::addGLProject(GLProject * p_glProject) {
     verbose("void GLWindow::addGLProject(GLProject * p_glProject)")
 	verbose("\tadd GLProject" << p_glProject -> name());
 
-	projects[p_glProject->name()] = p_glProject;
+    p_glProject -> init();
+
+	projects[p_glProject -> name()] = p_glProject;
 }
 
 void

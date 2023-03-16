@@ -2352,51 +2352,49 @@ namespace glr {
 
 		public:
 
-		explicit GLProject(CStr p_name) :
-		Named(p_name),
-		vcd(nullptr) {
+			explicit GLProject(CStr p_name) :
+			Named(p_name),
+			vcd(nullptr) {
+			}
 
-		}
-
-		virtual
-		~GLProject() {
-
-		}
+			virtual
+			~GLProject() {
+			}
 
 		public:
 
-		GLR
-		glr;
+			GLR
+			glr;
 
-		ViewControlData
-		* vcd;
+			ViewControlData
+			* vcd;
 
-		void
-		setViewControlData (ViewControlData * p_vcd) {
+			void
+			setViewControlData (ViewControlData * p_vcd) {
 
-			vcd = p_vcd;
-		}
+				vcd = p_vcd;
+			}
 
-		virtual void
-		init () = 0;
+			virtual void
+			init () = 0;
 
-		virtual void
-		resize (int p_width, int p_height) = 0;
+			virtual void
+			resize (int p_width, int p_height) = 0;
 
-		void
-		resizeViewport (int p_width, int p_height) {
+			void
+			resizeViewport (int p_width, int p_height) {
 
-			glr.screenWidth = p_width;
-			glr.screenHeight = p_height;
+				glr.screenWidth = p_width;
+				glr.screenHeight = p_height;
 
-			if (glr.fb != nullptr)
+				if (glr.fb != nullptr)
 
-				glr.fb->resize (p_width, p_height);
+					glr.fb->resize (p_width, p_height);
 
-		}
+			}
 
-		virtual void
-		paint() = 0;
+			virtual void
+			paint() = 0;
 	};
 };
 #endif // GLR_HPP
