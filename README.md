@@ -2,14 +2,19 @@
 ogl is a simple c++ opengl framework using glfw3 and glad for VSCode.
 
 ## prerequesites
-If not installed yet, install glfw3
+If not installed yet, install glfw3 and glm.
 
 ## GLFW3 / Ubuntu / Linux
 ```
 sudo apt update
 sudo apt install libglfw3 libglfw3-dev libglfw3-doc
 sudo apt upgrade
+```  
+
+## GLM / Ubuntu / Linux
 ```
+sudo apt install libgmlib-dev
+```  
 
 ## Download the repo
 ```
