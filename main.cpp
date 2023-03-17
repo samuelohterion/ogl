@@ -14,7 +14,7 @@ main() {
 	verbose("Hello GLWindow!")
 
     GLWindow
-    glwindow1;
+    glwindow;
 
 	Triangle2D *
 	triangle2D = new Triangle2D("Triangle2D");
@@ -25,15 +25,15 @@ main() {
 	Dummy *
 	dummy = new Dummy("Dummy"); 
 */
-	glwindow1.addGLProject(triangle2D);
+	glwindow.addGLProject(triangle2D);
 
 //	glwindow2.addGLProject(dummy);
 
-	glwindow1.selectGLProject(triangle2D -> name());
+	glwindow.selectGLProject(triangle2D -> name());
 
 //    glwindow2.selectGLProject(dummy -> name());
 
-    glwindow1.exec();
+    glwindow.exec();
 
 //    glwindow2.exec();
  	
