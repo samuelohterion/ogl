@@ -37,21 +37,6 @@ GLWindow::addGLProject(GLProject * p_glProject) {
 }
 
 void
-GLWindow::exec() {
-
-//    verbose("void GLWindow::exec()")
-
-    while (! glfwWindowShouldClose(__window)) {
-
-        glfwPollEvents();
-
-        paintGL();
-
-        glfwSwapBuffers(__window);
-    }
-}
-
-void
 GLWindow::cleanup() {
 
 //    verbose("void GLWindow::cleanup()")
@@ -92,6 +77,24 @@ GLWindow::cursor_position(double p_xpos, double p_ypos) {
 }
 
 void
+GLWindow::exec() {
+
+//    verbose("void GLWindow::exec()")
+
+    glfwMakeContextCurrent(__window);
+    //glfwGetWindowUserPointer(__)
+
+    while (! glfwWindowShouldClose(__window)) {
+
+        glfwPollEvents();
+
+        paintGL();
+
+        glfwSwapBuffers(__window);
+    }
+}
+
+void
 GLWindow::fb_resize(int p_width, int p_height) {
     
 //    verbose("void GLWindow::fb_resize(int p_width, int p_height)")
@@ -100,6 +103,13 @@ GLWindow::fb_resize(int p_width, int p_height) {
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, p_width, p_height);
 }
+
+GLFWwindow * const
+GLWindow::getGLFWWindow() const {
+
+    return __window;
+}
+
 
 int
 GLWindow::initGL(GLuint const & p_width, GLuint const & p_height, GLchar const * const & p_title) {
@@ -185,8 +195,6 @@ void
 GLWindow::paintGL() {
     
 //    verbose("GLWindow::paintGL()")
-
-    glfwMakeContextCurrent(__window);
 
     GLdouble
     time = glfwGetTime();

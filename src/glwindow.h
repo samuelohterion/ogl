@@ -27,12 +27,13 @@ TITLE_DEFAULT = "GLWindow";
 
 class GLWindow {
 
-    private:      
+    private:
 
-    public:
         GLFWwindow
         * __window;  
-		
+
+    public:
+
         std::map< CStr, GLProject * >
 		projects;
 
@@ -51,12 +52,6 @@ class GLWindow {
 
         ~GLWindow();
 
-        int
-        initGL(
-            GLuint const & p_width = WIDTH_DEFAULT,
-            GLuint const & p_height = HEIGHT_DEFAULT,
-            GLchar const * const & p_title = TITLE_DEFAULT);
-
         void
         addGLProject(GLProject * p_glProject);
 
@@ -71,6 +66,15 @@ class GLWindow {
 
         void
         fb_resize(int p_width, int p_height);
+
+        GLFWwindow * const
+        getGLFWWindow() const;
+
+        int
+        initGL(
+            GLuint const & p_width = WIDTH_DEFAULT,
+            GLuint const & p_height = HEIGHT_DEFAULT,
+            GLchar const * const & p_title = TITLE_DEFAULT);
 
         void
         key(int p_key, int p_scancode, int p_action, int p_mods);

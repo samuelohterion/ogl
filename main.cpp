@@ -7,36 +7,44 @@
 #include "glprojects/coordinateSystem/coordinatesystem.hpp"
 
 #include "src/verbose.cpp"
+#include <iostream>
+#include <map>
+
+#define NUMER_OF_WINDOWS 5
 
 int
 main() {
 
 	verbose("Hello GLWindow!")
 
-    GLWindow
-    glwindow;
+	std::map< std::string, GLWindow * >
+	windows;
 
-	Triangle2D *
-	triangle2D = new Triangle2D("Triangle2D");
-/*
-	GLWindow
-    glwindow2;
+	for(int i = 0; i < NUMER_OF_WINDOWS; ++ i) {
 
-	Dummy *
-	dummy = new Dummy("Dummy"); 
-*/
-	glwindow.addGLProject(triangle2D);
+		std::stringstream
+		ssname;
+		
+		ssname << "GLWin " << i;
 
-//	glwindow2.addGLProject(dummy);
+		std::string
+		name = ssname.str();
+		
+		windows[name] = new GLWindow(320, 200, name.c_str());
+	}
 
-	glwindow.selectGLProject(triangle2D -> name());
+	for(auto & w : windows) {
 
-//    glwindow2.selectGLProject(dummy -> name());
+		Triangle2D *
+		triangle2D = new Triangle2D("Triangle2D");
 
-    glwindow.exec();
+		w.second->addGLProject(triangle2D);
+		w.second->selectGLProject(triangle2D -> name());
+		w.second->exec(); //hier kommen wir nicht mehr raus. das muss ein thread werden.
+	}
 
-//    glwindow2.exec();
- 	
+	//windows["GLWin 1"]->exec();
+
 	verbose("God Bye GLWindow!")
 
     return EXIT_SUCCESS;

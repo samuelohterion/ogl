@@ -47,9 +47,9 @@ GLWMan::addWindow(GLWindow * p_glWindow) {
 
     verbose("void GLWMan::addWindow(GLWindow * p_glWindow)")
 
-    windows[p_glWindow -> __window] = p_glWindow;
+    windows[p_glWindow -> getGLFWWindow()] = p_glWindow;
 
-    setBindings(p_glWindow -> __window);
+    setBindings(p_glWindow -> getGLFWWindow());
 }
 
 void 
@@ -65,7 +65,7 @@ GLWMan::deleteWindow(GLWindow * p_gl_window) {
 
     verbose("void GLWMan::deleteWindow(GLWindow * p_glWindow)")
 
-    windows.erase(p_gl_window -> __window);
+    windows.erase(p_gl_window -> getGLFWWindow());
 }    
 
 void
@@ -73,10 +73,14 @@ GLWMan::setBindings(GLFWwindow * p_window) {
 
     verbose("void GLWMan::setBindings(GLFWwindow * p_window)")
     
-    if (windows.find(p_window) != windows.end()) {
+    auto
+    glw = windows.find(p_window); 
+
+    if (glw != windows.end()) {
 
         verbose("\twindow was found. callbacks will be set.")
 
+        glfwSetWindowUserPointer(p_window, static_cast<void *>(&(*glw)));
         glfwSetWindowSizeCallback(p_window, window_resize_callback);
         glfwSetFramebufferSizeCallback(p_window, framebuffer_resize_callback);
         glfwSetKeyCallback(p_window, key_callback);
